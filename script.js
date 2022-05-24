@@ -169,17 +169,42 @@ btnScrollTo.addEventListener('click',function(e){
   
   // Scrolling
   // window.scrollTo(s1coords.left+window.pageXOffset,s1coords.top+pageYOffset);
-
+  
   // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // })
+    //   left: s1coords.left + window.pageXOffset,
+    //   top: s1coords.top + window.pageYOffset,
+    //   behavior: 'smooth',
+    // })
+    
+    section1.scrollIntoView({behavior:'smooth'});
+  });
+  
+  //Tabbed component
+  
+  const tabs= document.querySelectorAll('.operations__tab');
+  const tabsContainer=document.querySelector('.operations__tab-container');
+  const tabsContent=document.querySelectorAll('.operations__content');
+  
+  tabsContainer.addEventListener('click',function(e){
+    const clicked=e.target.closest('.operations__tab');
+  
 
-  section1.scrollIntoView({behavior:'smooth'});
-});
+    //Guard clause
+    if(!clicked) return;
 
+    
+    //remove active classes
+    tabs.forEach(t=>t.classList.remove('operations__tab--active'));
+    tabsContent.forEach(c=>c.classList.remove('operations__content--active'));
 
+    //Activate tab
+    clicked.classList.add('operations__tab--active');
+
+    //Activate content area
+
+    document.querySelector(`.operations__content--${clicked.dataset.tab}`).classList.add('operations__content--active');
+  })
+  
 // const h1 =document.querySelector('h1');
 
 // const alertH1=function(e){
@@ -220,28 +245,28 @@ btnScrollTo.addEventListener('click',function(e){
 //   console.log('NAV',e.target,e.currentTarget);
 // },);
 
-const h1=document.querySelector('h1');
-//Going downwards: child
+// const h1=document.querySelector('h1');
+// //Going downwards: child
 
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color='white';
-h1.lastElementChild.style.color='orangered';
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children);
+// h1.firstElementChild.style.color='white';
+// h1.lastElementChild.style.color='orangered';
 
-//Going upwards: parents
-console.log(h1.parentNode);
-console.log(h1.parentElement);
-h1.closest('.header').style.background='var(--gradient-secondary)';
-h1.closest('h1').style.background='var(--gradient-primary)';
+// //Going upwards: parents
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
+// h1.closest('.header').style.background='var(--gradient-secondary)';
+// h1.closest('h1').style.background='var(--gradient-primary)';
 
 
-//Going sideways: siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// //Going sideways: siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-//move up to parent element, then choose all child
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function(el){
-  if(el!==h1) el.style.transform='scale(0.5)';
-});
+// //move up to parent element, then choose all child
+// console.log(h1.parentElement.children);
+// [...h1.parentElement.children].forEach(function(el){
+//   if(el!==h1) el.style.transform='scale(0.5)';
+// });
