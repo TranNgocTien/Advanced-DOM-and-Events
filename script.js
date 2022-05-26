@@ -453,3 +453,17 @@ const slider=function(){
 // [...h1.parentElement.children].forEach(function(el){
 //   if(el!==h1) el.style.transform='scale(0.5)';
 // });
+document.addEventListener('DOM contentLoaded', function(e){
+  console.log('HTML parsed and DOM tree built!',e);
+})
+
+window.addEventListener('load',function(e){
+ console.log('Page fully loaded',e)
+});
+// window.addEventListener('beforeunload',function(e){
+
+// e.preventDefault();
+
+// e.returnValue='message';
+
+// });
